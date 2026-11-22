@@ -134,3 +134,69 @@
   url          = {https://www.nytimes.com/2024/03/15/technology/ai-regulation-debate.html},
   note         = {Accessed October 22, 2025},
 }
+@inproceedings{saewong2002,
+   abstract = {Obtaining simultaneous and timely access to multiple resources is known to be an NP-complete problem [10]. Complete resource decoupling is, therefore, often used for managing end-to-end delays in distributed real-time systems where each processor is scheduled independent of the others. This decou-pling approach unfortunately fails when multiple resources must be managed within a single node. Resources such as disk band-width and network bandwidth are available on a single node but must be managed by their host processor by means of device drivers, filesystem or protocol services. The host processor acting as a controlling resource, therefore, must play multiple roles. One, it is used by applications on that node. Two, it is used to control and manage other (time-shared) controlled resources including disk bandwidth and network bandwidth. These two roles, unfortunately, can often be at odds with one another. In this paper, we investigate the problem of co-scheduling controlling and controlled resources. We propose the use of a Cooperative Scheduling Server (CSS), which is a dedicated server that manages one specific controlled resource (like disk bandwidth, network bandwidth, inter-process communication, etc.) while using a controlling resource (like the processor). Two core ideas underlie our approach. First, a single (aperiodic) server is created on a controlling resource (such as a CPU) to handle all local requests for a controlled resource (such as disk bandwidth). This implies that conjunctive admission control must be carried out on both the controlling and controlled resources. Secondly, timing constraints at the application level are partitioned into multiple stages, each of which will be guaranteed to complete on a particular resource. RTFS is a real-time filesystem [2] that provides disk bandwidthguarantees under light CPU loads. With a cooperative scheduling server (FS-CSS) for this disk-based filesystem, disk bandwidth guarantees can be obtained under both heavy CPU and disk workloads. We describe the design and implementation of FS-CSS for providing disk bandwidth guarantees. We conclude with a detailed performance evaluation of FS-CSS.},
+   author = {Saowanee Saewong and Ragunathan Rajkumar},
+   doi = {10.1109/REAL.1999.818831},
+   booktitle = {Proceedings 20th IEEE Real-Time Systems Symposium (Cat. No.99CB37054)},
+   publisher = {IEEE},
+   title = {Cooperative Scheduling of Multiple Resources},
+   year = {2002}
+}
+
+@misc{Bishop2022,
+   abstract = {The QUIC transport protocol has several features that are desirable in a transport for HTTP, such as stream multiplexing, per-stream flow control, and low-latency connection establishment. This document describes a mapping of HTTP semantics over QUIC. This document also identifies HTTP/2 features that are subsumed by QUIC and describes how HTTP/2 extensions can be ported to HTTP/3.},
+   author = {M Bishop},
+   doi = {10.17487/RFC9114},
+   issue = {9114},
+   month = {6},
+   publisher = {RFC Editor},
+   title = {HTTP/3},
+   url = {https://www.rfc-editor.org/info/rfc9114/},
+   year = {2022}
+}
+
+@misc{rfc2119,
+    series =    {Request for Comments},
+    number =    2119,
+    howpublished =  {RFC 2119},
+    publisher = {RFC Editor},
+    doi =       {10.17487/RFC2119},
+    url =       {https://www.rfc-editor.org/info/rfc2119/},
+    author =    {S. Bradner},
+    title =     {{Key words for use in RFCs to Indicate Requirement Levels}},
+    pagetotal = 3,
+    year =      1997,
+    month =     mar,
+    abstract =  {In many standards track documents several words are used to signify the requirements in the specification. These words are often capitalized. This document defines these words as they should be interpreted in IETF documents. This document specifies an Internet Best Current Practices for the Internet Community, and requests discussion and suggestions for improvements.},
+}
+
+
+@report{fielding_http_2022,
+	title = {{HTTP} Semantics},
+	url = {https://www.rfc-editor.org/info/rfc9110},
+	doi = {10.17487/RFC9110},
+	pages = {RFC9110},
+	number = {{RFC}9110},
+	institution = {{RFC} Editor},
+	editor = {Fielding, R. and Nottingham, M. and Reschke, J.},
+	urldate = {2026-10-16},
+	date = {2022-06},
+	langid = {english},
+}
+
+
+@book{kurose_computer_2022,
+	location = {Harlow},
+	edition = {Eighth edition, global edition},
+	title = {Computer networking: a top-down approach},
+	isbn = {978-1-292-40551-3},
+	shorttitle = {Computer networking},
+	abstract = {For courses in Networking/Communications. Motivate your students with a top-down, layered approach to computer networking Unique among computernetworking texts, the 8th Edition, Global Edition, of the popular Computer Networking: A Top Down Approach builds on the authors long tradition of teaching this complex subject through a layered approach in a top-downmanner. The text works its way from the application layer down toward the physical layer, motivating students by exposing them to important concepts early in their study of networking. Focusing on the Internet and the fundamentally important issues of networking, this text provides an excellent foundation for students in computer science and electrical engineering, without requiring extensive knowledge of programming or mathematics. The 8th Edition, Global Edition, has been updated to reflect the most important and exciting recent advances in networking, including software-defined networking ({SDN}) and the rapid adoption of 4G/5G networks and the mobile applications they enable},
+	pagetotal = {1},
+	publisher = {Pearson},
+	author = {Kurose, James F. and Ross, Keith W.},
+	date = {2022},
+	annotation = {Includes bibliographical references and index},
+}
+

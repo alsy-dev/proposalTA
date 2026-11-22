@@ -1,0 +1,10 @@
+% ==========================================
+% BAB IV DESAIN KONSEP SOLUSI
+% ==========================================
+\chapter{DESAIN KONSEP SOLUSI}
+\label{chap:desain-konsep-solusi}
+\section{Model konseptual sebelumnya}
+
+Model konseptual sistem saat ini menggambarkan alur pelayanan HTTP/3 pada layanan yang menggunakan Apache Web Server. Pada kondisi ini, \textit{request} dari \textit{client} akan dikirimkan ke \textit{proxy server} yang sudah mendukung HTTP/3 terlebih dahulu, yang kemudian ditranslasikan dan diteruskan melalui versi HTTP yang didukung oleh Apache Web Server. Mekanisme untuk HTTP/3 \textit{response} juga perlu melalui \textit{proxy server} terlebih dahulu sebelum dikirimkan ke pengguna.
+
+Berikut adalah diagram alur pelayanan HTTP/3 pada model konseptual sebelumnya:

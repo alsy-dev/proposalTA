@@ -1,0 +1,103 @@
+% ============================================================================================
+% BAB III ANALISIS MASALAH
+% Pembagian subbab tidak rigid dan dapat bervariasi. Bab ini minimal berisi analisis kebutuhan
+% fungsional dan nonfungsional, analisis berbagai alternatif solusi yang dapat ditawarkan, dan
+% metode pemilihan solusi yang diusulkan.
+% ============================================================================================
+\chapter{ANALISIS MASALAH}
+\label{chap:analisis-masalah}
+\section{Analisis Kondisi Saat Ini}
+Penerapan dukungan HTTP/3 pada pengguna Apache Web Server saat ini seringkali mengandalkan \textit{proxy server} dari server lain yang sudah mendukung HTTP/3. Proxy server tersebut akan berfungsi sebagai \textit{gateway} untuk \textit{request} HTTP/3 yang kemudian meneruskan request tersebut ke Apache Web Server via HTTP versi sebelum 3. Meskipun begitu, langkah ini tentu meningkatkan \textit{latency} karena setiap request harus diteruskan terlebih dahulu sebelum dilayani. Metode ini juga menyulitkan O\&M karena penyedia layanan harus mengelola dua web server untuk menyediakan satu website.
+
+\section{Analisis Kebutuhan}
+%\lipsum[4]
+\subsection{Identifikasi Masalah Pengguna}
+Masalah utama yang dihadapi oleh penyedia website berbasis Apache dapat diidentifikasi sebagai berikut:
+\begin{enumerate}
+\item Tidak adanya dukungan \textit{native} HTTP/3 di Apache Web Server \\
+Pengembang tidak bisa melakukan implementasi HTTP/3 secara langsung di Apache Web Server.
+
+\item Perlunya \textit{proxy server} untuk mendukung fitur-fitur HTTP/3 \\
+Adanya server tambahan untuk mengadopsi HTTP/3 dapat menyulitkan penyedia website dan menghambat laju adopsi HTTP/3.
+
+\end{enumerate}
+
+Untuk mencari solusi atas masalah-masalah tersebut, perlu disusun kebutuhan fungsional dan nonfungsional sistem yang diperlukan. Subbab berikut menjabarkan kebutuhan-kebutuhan tersebut.
+\vspace{2cm}
+\subsection{Kebutuhan Fungsional}
+Berikut adalah kebutuhan fungsional:
+\begin{table}[h]
+\begin{tabular}{|p{0.1\textwidth}|p{0.4\textwidth}|p{0.4\textwidth}|}
+\hline
+\textbf{Kode} & \textbf{Kebutuhan Fungsional} & \textbf{Deskripsi}
+\\
+\hline
+F01 & Pelayanan HTTP/3 \textit{native} & Apache Server dapat melayani HTTP/3 tanpa mengandalkan web server lain. \\
+\hline
+
+\end{tabular}
+\end{table}
+\subsection{Kebutuhan Nonfungsional}
+Berikut adalah kebutuhan nonfungsional yang disajikan dalam bentuk tabel:
+
+\begin{table}[h]
+\begin{tabular}{|p{0.1\textwidth}|p{0.4\textwidth}|p{0.4\textwidth}|}
+\hline
+\textbf{Kode} & \textbf{Kebutuhan Non-fungsional} & \textbf{Deskripsi}
+\\
+\hline
+NF01 & Keamanan & Sistem mematuhi standar keamanan yang diharuskan pada spesifikasi RFC \\
+\hline
+NF02 & Kinerja & Server harus mencapai kinerja yang lebih baik dibanding pelayanan HTTP/3 via \textit{proxy} server. \\
+\hline
+NF03 & Kesesuaian dengan RFC & Server yang dibangun harus memenuhi spesifikasi yang diwajibkan pada dokumen RFC. \\
+\hline
+
+\end{tabular}
+\end{table}
+
+\section{Analisis Pemilihan Solusi}
+\subsection{Alternatif Solusi}
+Berikut adalah alternatif solusi yang dirancang dalam bentuk tabel:
+\begin{table}[h]
+\begin{tabular}{|p{0.1\textwidth}|p{0.4\textwidth}|p{0.4\textwidth}|}
+\hline
+\textbf{Kode} & \textbf{Alternatif Solusi} & \textbf{Deskripsi} \\
+\hline
+AS1 & Menggunakan \textit{proxy server} untuk menangani request HTTP/3 & Pelayanan HTTP/3 mengandalkan \textit{proxy server} yang sudah mampu menangani \textit{request} HTTP/3 yang kemudian mentranslasikan dan meneruskan \textit{request} tersebut dengan versi HTTP yang telah didukung oleh Apache Web Server \\
+\hline
+AS2 & Migrasi penuh ke web server lain & Pengembang memigrasikan layanan webnya ke web server yang telah mendukung HTTP/3. \\
+\hline
+AS3 & Mengembangkan modul HTTP/3 untuk Apache Web Server & Pengembang membuat modul HTTP/3 agar Apache Web Server dapat melayani HTTP/3 secara native. \\
+\hline
+\end{tabular}
+\end{table}
+\subsection{Analisis Penentuan Solusi}
+
+Untuk menentukan solusi terbaik, ketiga alternatif dinilai berdasarkan beberapa kriteria utama: kemudahan implementasi, kemudahan \textit{maintenance}, kesesuaian terhadap masalah peneliti.
+
+Penilaian menggunakan skala 1 --- 5, yang mana:
+
+1 = Sangat Buruk, 2 = Buruk, 3 = Cukup, 4 = Baik, 5 = Sangat Baik.
+
+Berikut adalah hasil analisis penentuan solusi dalam bentuk tabel:
+
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Kriteria penilaian} & \textbf{AS1} & \textbf{AS2} & \textbf{AS3} \\
+\hline
+Kemudahan implementasi & 5 & 3 & 2 \\
+\hline
+Kemudahan maintenance & 3 & 5 & 5 \\
+\hline
+Kesesuaian terhadap masalah peneliti & 2 & 2 & 5 \\
+\hline
+\textbf{Total Skor (dari 15)} & \textbf{10} & \textbf{10} & \textbf{12} \\
+\hline
+
+
+Berdasarkan hasil evaluasi, solusi AS3 (mengembangkan modul HTTP/3 untuk Apache Web Server) memperoleh skor tertinggi (12/15) dan dinilai paling sesuai dengan konteks penelitian. Solusi ini juga memudahkan pengembang dalam melakukan \textit{maintenance} sehingga bagus untuk operasional jangka panjang.
+
+\end{tabular}
+\end{table}
